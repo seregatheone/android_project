@@ -8,24 +8,9 @@ import retrofit2.http.GET;
 
 
 public class Answer{
-    public Boolean status;
-    public String sql;
-
     private ArrayList<User> data;
-    public void setData(ArrayList<User> users){
-        this.data = users;
-    }
     public ArrayList<User>getData(){
         return this.data;
-    }
-
-    public List<User> getUsers(){
-        List<User> users = new ArrayList<User>();
-        for (User u :data) {
-            users.add(u);
-        }
-        return users;
-
     }
 }
 

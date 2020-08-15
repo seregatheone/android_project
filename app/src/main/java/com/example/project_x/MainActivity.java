@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.icu.text.IDNA;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import static java.lang.Boolean.TRUE;
 
 public class MainActivity extends ListActivity {
     final String[] subjects = new String[] { "Математика", "Информатика"};
+    public String object = "";
 
 
     @Override
@@ -33,17 +35,10 @@ public class MainActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
         Toast.makeText(getApplicationContext(),
                 "Вы выбрали " + l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
-        if (l.getItemAtPosition(position).toString()=="Математика"){
-
-            Intent intent = new Intent(MainActivity.this, Matem.class);
-            startActivity(intent);
-        }
-        else {
-
-            Intent intent = new Intent(MainActivity.this, Inform.class);
-            startActivity(intent);
-        }
-
+        object = l.getItemAtPosition(position).toString();
+        Intent intent = new Intent(MainActivity.this, Object.class);
+        intent.putExtra("object", object);
+        startActivity(intent);
 
     }
     private static long back_pressed;

@@ -50,7 +50,7 @@ public class CustomListAdapter extends BaseAdapter {
         TextView rating = (TextView) convertView.findViewById(R.id.rating);
         TextView description = (TextView) convertView.findViewById(R.id.description);
 
-        // getting movie data for the row
+        // getting olimp data for the row
         Olimp m = olimpItems.get(position);
 
         // title
