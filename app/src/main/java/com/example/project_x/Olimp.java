@@ -1,10 +1,10 @@
 package com.example.project_x;
 
 class Olimp {
-    private String title,description,link;
+    private String title, description, link;
     private String rating;
 
-    public Olimp(String name,String description, String rating,String link) {
+    public Olimp(String name, String description, String rating, String link) {
         this.title = name;
         this.description = description;
         this.rating = rating;

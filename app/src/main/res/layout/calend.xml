@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/openManyDaysPickerDialogButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Clear data events"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        android:background="@drawable/btns"
+        android:layout_marginBottom="10dp"/>
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:headerColor="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:selectionLabelColor="#3F51B5"
+        app:anotherMonthsDaysLabelsColor="#3F51B5"
+        app:todayLabelColor="#AEEA00"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ваши олимпиады: \n"
+        android:textColor="#343434"
+        android:textSize="16dip"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"/>
+    <Button
+        android:id="@+id/clear_db"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Clear database"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/openManyDaysPickerDialogButton"
+        android:background="@drawable/btns"
+        android:layout_marginTop="10dp">
+
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

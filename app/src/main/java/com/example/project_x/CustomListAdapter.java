@@ -57,7 +57,6 @@ public class CustomListAdapter extends BaseAdapter {
         TextView description = convertView.findViewById(R.id.description);
         // getting olimp data for the row
         Olimp m = olimpItems.get(position);
-
         // title
         title.setText(m.getTitle());
 

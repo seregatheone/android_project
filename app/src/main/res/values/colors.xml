@@ -10,4 +10,15 @@
     <color name="list_row_end_color">#ffffff</color>
     <color name="list_row_hover_start_color">#ebeef0</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
+    <color name="red">#F10030</color>
+    <color name="yellow">#B8E600</color>
+    <color name="green">#B219FF09</color>
+    <color name="sampleDark">#B20D111E</color>
+    <color name="sampleLight">#B284C3EA</color>
+    <color name="sampleLighter">#B2C3F1EF</color>
+    <color name="dialogAccent">#B27141F6</color>
+
+
+
+
 </resources>

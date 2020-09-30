@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">project_X</string>
-    <string-array name="month">
+    <string name="dialog_text">Ссылка на мероприятие
+    </string>
+    <string name="registrate">Запланировать</string>
+    <string name="cancel">Закрыть</string>
+    <string name="olimpiad">Олимпиада : </string>
+    <string name="result">Result</string>
+    <string name="registrat">Записаться</string>
+    <string name="save">Сохранить</string>
+
+    <string name="material_calendar_monday">Пн</string>
+    <string name="material_calendar_tuesday">Вт</string>
+    <string name="material_calendar_wednesday">Ср</string>
+    <string name="material_calendar_thursday">Чт</string>
+    <string name="material_calendar_friday">Пт</string>
+    <string name="material_calendar_saturday">Сб</string>
+    <string name="material_calendar_sunday">Вс</string>
+
+    <array name="material_calendar_months_array">
         <item>Январь</item>
         <item>Февраль</item>
         <item>Март</item>
@@ -13,5 +30,12 @@
         <item>Октябрь</item>
         <item>Ноябрь</item>
         <item>Декабрь</item>
-    </string-array>
+    </array>
+
+    <string name="material_calendar_today_button">Today</string>
+    <string name="material_calendar_positive_button">OK</string>
+    <string name="material_calendar_negative_button">Cancel</string>
+    <string name="no_note">нет записей</string>
+    <string name="write_note">Напишите текст</string>
+    <string name="content">Поспешите</string>
 </resources>

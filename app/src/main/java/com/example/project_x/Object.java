@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -28,25 +27,36 @@ public class Object extends AppCompatActivity {
     private ListView listView;
     private CustomListAdapter adapter;
     private List<String> links = new ArrayList<String>();
+    private List<String> names = new ArrayList<String>();
+    Bundle object = new Bundle();
+
     private void goToUrl(String url) {
         Uri uriUrl = Uri.parse(url);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
+        //database
+
         listView = (ListView) findViewById(R.id.list);
         adapter = new CustomListAdapter(this, olimpList);
         listView.setAdapter(adapter);
         AsyncSelectTask asyncSelectTask = new AsyncSelectTask();
-        asyncSelectTask.execute("http://192.168.0.4");
-
+        asyncSelectTask.execute("http://192.168.43.197");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                goToUrl(links.get(position));
+                Dialogs dialogs = new Dialogs();
+
+                object.putString("key", links.get(position));
+
+                object.putString("name", names.get(position));
+                dialogs.setArguments(object);
+                dialogs.show(getSupportFragmentManager(), "missiles");
             }
         });
     }
@@ -54,13 +64,12 @@ public class Object extends AppCompatActivity {
 
     class AsyncSelectTask extends AsyncTask<String, Integer, Answer> {
         @Override
-        protected void onPreExecute(){
-            //перед началом загрузки
+        protected void onPreExecute() {
 
         }
 
         @Override
-        protected void onProgressUpdate(Integer...  values){
+        protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             // тут можно обновить статусбар
         }
@@ -78,31 +87,37 @@ public class Object extends AppCompatActivity {
                     .build();
             UserService service = retrofit.create(UserService.class);
             UserService1 service1 = retrofit.create(UserService1.class);
+            UserService2 service2 = retrofit.create(UserService2.class);
+            UserService3 service3 = retrofit.create(UserService3.class);
             try {
                 Call<Answer> call;
-                if (getIntent().getExtras().getString("object").equals("Математика")){
+                if (getIntent().getExtras().getString("object").equals("Математика")) {
                     call = service1.getAnswer();
-                }
-                else {
+                } else if (getIntent().getExtras().getString("object").equals("Биология")) {
+                    call = service2.getAnswer();
+                } else if (getIntent().getExtras().getString("object").equals("Химия")) {
+                    call = service3.getAnswer();
+                } else {
                     call = service.getAnswer();
                 }
 
 
                 Response<Answer> response = call.execute();
                 answer = response.body();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return answer;
         }
 
         @Override
-        protected void onPostExecute(Answer answer){
+        protected void onPostExecute(Answer answer) {
             super.onPostExecute(answer);
-            for(User u: answer.getData()){
-                Olimp olimp = new Olimp(u.title,u.desk,u.rating,u.ssil);
+            for (User u : answer.getData()) {
+                Olimp olimp = new Olimp(u.title, u.desk, u.rating, u.ssil);
                 olimpList.add(olimp);
                 links.add(u.ssil);
+                names.add(u.title);
             }
             adapter.notifyDataSetChanged();
 
