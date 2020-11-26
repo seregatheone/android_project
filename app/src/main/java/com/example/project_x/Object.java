@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class Object extends AppCompatActivity {
         adapter = new CustomListAdapter(this, olimpList);
         listView.setAdapter(adapter);
         AsyncSelectTask asyncSelectTask = new AsyncSelectTask();
-        asyncSelectTask.execute("http://192.168.43.197");
+        asyncSelectTask.execute("http://h152771.s22.test-hf.su/");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -89,7 +90,7 @@ public class Object extends AppCompatActivity {
             UserService1 service1 = retrofit.create(UserService1.class);
             UserService2 service2 = retrofit.create(UserService2.class);
             UserService3 service3 = retrofit.create(UserService3.class);
-            try {
+
                 Call<Answer> call;
                 if (getIntent().getExtras().getString("object").equals("Математика")) {
                     call = service1.getAnswer();
@@ -102,11 +103,14 @@ public class Object extends AppCompatActivity {
                 }
 
 
-                Response<Answer> response = call.execute();
-                answer = response.body();
-            } catch (Exception e) {
+            Response<Answer> response = null;
+            try {
+                response = call.execute();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
+            answer = response.body();
+
             return answer;
         }
 

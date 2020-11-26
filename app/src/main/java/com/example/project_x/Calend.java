@@ -299,7 +299,6 @@ public class Calend extends AppCompatActivity implements OnSelectDateListener, O
         String date = sdf.format(calendar.getTime());
         for (EventDb eventDb : mDBConnector.selectAll()) {
             Log.i("11111", eventDb.getDate());
-            Log.i("22222", date);
             if (eventDb.getDate().equals(date)) {
                 actions.add(eventDb.getEventName());
             }

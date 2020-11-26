@@ -20,21 +20,21 @@ class User {
 }
 
 interface UserService {
-    @GET("/select_info.php")
+    @GET("demidovich/select_info.php")
     Call<Answer> getAnswer();
 }
 
 interface UserService1 {
-    @GET("/select_math.php")
+    @GET("demidovich/select_math.php")
     Call<Answer> getAnswer();
 }
 
 interface UserService2 {
-    @GET("/select_biol.php")
+    @GET("demidovich/select_biol.php")
     Call<Answer> getAnswer();
 }
 
 interface UserService3 {
-    @GET("/select_chim.php")
+    @GET("demidovich/select_chim.php")
     Call<Answer> getAnswer();
 }
